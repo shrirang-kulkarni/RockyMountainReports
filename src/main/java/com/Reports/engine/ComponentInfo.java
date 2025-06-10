@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ComponentInfo {
+    private String componentTilte;
+    private String componentdescription;
     private ReportComponentType componentType;
     private ComponentData componentData;
 }

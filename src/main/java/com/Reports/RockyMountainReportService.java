@@ -3,10 +3,8 @@ package com.Reports;
 import com.Reports.engine.ReportInformation;
 import com.Reports.engine.ReportingEngine;
 import com.Reports.helpers.FileOperations;
-import com.Reports.template.TempplateComponentType;
-import com.Reports.template.Metrics;
-import com.Reports.template.ReportElement;
-import com.Reports.template.ReportTemplate;
+import com.Reports.template.*;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -36,10 +34,11 @@ public class RockyMountainReportService {
     private static int GenerateReport( )
     {
 
-        String filePath = "/Users/shkulkarni/Project/Rocky Mountain/Code/RockyMountainReports/report_template.json";
+        String filePath = "report_template.json";
 
         // Create ObjectMapper instance
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         try {
 
@@ -132,6 +131,7 @@ public class RockyMountainReportService {
             String description = scanner.nextLine().trim();
             report.setDescription(description);
 
+/*
             System.out.print("Start Time in epoch");
             Long startTime = scanner.nextLong();scanner.nextLine();
             report.setStartTime(startTime);
@@ -139,6 +139,24 @@ public class RockyMountainReportService {
             System.out.print("End Time in epoch");
             Long endTime = scanner.nextLong(); scanner.nextLine();
             report.setEndTime(endTime);
+*/
+            System.out.print("Frequency");
+            System.out.println( " 0 ---  Hourly ");
+            System.out.println( " 1 ---  Daily");
+            System.out.println( " 2 ---  Weekly");
+            System.out.println( " 3 ---  Monthly");
+            System.out.println( " 4 ---  Yearly");
+            int frequency = scanner.nextInt();
+            ReportFrequency reportFrequency = ReportFrequency.fromCode(frequency);
+            report.setFrequency(reportFrequency);
+
+            System.out.println("Output format");
+            System.out.println(" 0 --- PDF");
+            System.out.println(" 1 --- HTML");
+
+            int format = scanner.nextInt();
+            ReportOutPutFormat reportOutPutFormat = ReportOutPutFormat.fromCode(format);
+            report.setOutPutFormat(reportOutPutFormat);
 
             System.out.print("Create By");
             String createBy = scanner.nextLine().trim();

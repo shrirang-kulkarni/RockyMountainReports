@@ -12,8 +12,9 @@ public class ReportTemplate {
     private String name;
     private String title;
     private String description;
-    private Long startTime;
-    private Long endTime;
+    private ReportFrequency frequency;
+    private ReportOutPutFormat outPutFormat;
     private String createdBy;
+    private List<String> receipients;
     private List<ReportElement> reportElements;
 }

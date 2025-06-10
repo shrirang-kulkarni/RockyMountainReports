@@ -11,13 +11,16 @@ public class ApplicationUsageDataSource implements PieChartDataSource {
     public PieChartComponentData getPieChartData() {
         PieChartComponentData pieChartComponentData = new PieChartComponentData();
         pieChartComponentData.setTitle("Application Usage");
-        pieChartComponentData.setKeyFieldName("KeyField");
-        pieChartComponentData.setValueFieldName("ValueField");
+        pieChartComponentData.setKeyFieldName("Application Name");
+        pieChartComponentData.setValueFieldName("Usage in %");
         List<KeyValueData> keyValueDataList = new ArrayList<>();
         keyValueDataList.add(new KeyValueData("App1", 10));
-        keyValueDataList.add(new KeyValueData("App2", 20));
-        keyValueDataList.add(new KeyValueData("App3", 15));
-        keyValueDataList.add(new KeyValueData("App4", 55));
+        keyValueDataList.add(new KeyValueData("App2", 10));
+        keyValueDataList.add(new KeyValueData("App3", 5));
+        keyValueDataList.add(new KeyValueData("App4", 30));
+        keyValueDataList.add(new KeyValueData("App5", 10));
+        keyValueDataList.add(new KeyValueData("App6", 1));
+
         pieChartComponentData.setKeyValueDataList(keyValueDataList);
         return pieChartComponentData;
     }
